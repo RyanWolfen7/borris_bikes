@@ -20,7 +20,6 @@ describe DockingStation do
       DockingStation::DEFAULT_CAPACITY.times {subject.return_bike Bike.new }
       expect { subject.return_bike Bike.new }.to raise_error 'Station full'
     end
-  end
 
   describe '#init' do
     it "tests if capacity can be changed" do
