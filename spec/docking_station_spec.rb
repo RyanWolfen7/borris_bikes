@@ -22,6 +22,25 @@ describe DockingStation do
     end
   end
 
+  describe '#init' do
+    it "tests if capacity can be changed" do
+    station = DockingStation.new(50)
+    expect(station.capacity).to eq 50
+    end
+
+    it "tests default capacity" do
+    station = DockingStation.new
+    expect(station.capacity).to eq DockingStation::DEFAULT_CAPACITY
+    end
+
+    it 'has a variable capacity' do
+      docking_station = DockingStation.new(50)
+      50.times { docking_station.return_bike Bike.new }
+      expect{ docking_station.return_bike Bike.new }.to raise_error 'Station full'
+  end
+
+  end
+
   it 'returns docked bike' do
     bike = Bike.new
 
